@@ -1,0 +1,30 @@
+{
+  "name": "text-search-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build-v1": "tsc -w",
+    "start:run-v1": "nodemon ./build/api/v1/index.js",
+    "start-v1": "concurrently npm:start:*",
+    "dev-v2": "nodemon --experimental-specifier-resolution=node ./src/api/v2/index.js",
+    "start-v2": "node --experimental-specifier-resolution=node ./src/api/v2/index.js",
+    "dev": "npm run dev-v2",
+    "start": "npm run start-v2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.11",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13"
+  },
+  "type": "module"
+}
