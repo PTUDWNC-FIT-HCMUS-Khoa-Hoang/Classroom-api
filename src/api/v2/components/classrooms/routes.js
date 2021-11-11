@@ -9,6 +9,7 @@ classroomRoutes.get(
   authMiddleware,
   classroomControllers.getAllByOwner
 );
+classroomRoutes.get('/:id', authMiddleware, classroomControllers.getOnePrivate);
 // ======================== POST ========================
 classroomRoutes.post('/', authMiddleware, classroomControllers.postOne);
 // ======================== PUT ========================
