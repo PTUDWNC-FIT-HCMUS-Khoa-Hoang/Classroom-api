@@ -39,7 +39,7 @@ This is a web application for my Web Development course on my university.
       }
     - **Body**:
 
-    ```json
+    ```javascript
     title: {
       type: String,
       required: true,
@@ -68,7 +68,7 @@ This is a web application for my Web Development course on my university.
    - **Route**: /users/login
    - **Body**:
 
-   ```json
+   ```javascript
    {
        email: String,
        password: String
@@ -81,7 +81,7 @@ This is a web application for my Web Development course on my university.
    - **Route**: /users/register
    - **Body**:
 
-   ```json
+   ```javascript
    {
        email: String,
        password: String
