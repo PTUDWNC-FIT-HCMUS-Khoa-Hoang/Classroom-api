@@ -1,9 +1,11 @@
 import classroomRoutes from '../components/classrooms/routes';
 import userRoutes from '../components/users/routes';
+import joinClassroomRoutes from '../components/user_classroom/routes';
 
 const startRoutes = (app) => {
   app.use('/users', userRoutes);
   app.use('/classrooms', classroomRoutes);
+  app.use('/join-classroom', joinClassroomRoutes);
 
   //404
   app.use((req, res, next) => {
