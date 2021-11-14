@@ -1,10 +1,10 @@
 import postOne from './postOne';
-import getAllByOwner from './getAllByOwner';
+import getAllRelated from './getAllRelated';
 import getOnePrivate from './getOnePrivate';
 
 const classroomControllers = {
   postOne,
-  getAllByOwner,
+  getAllRelated,
   getOnePrivate,
 };
 export default classroomControllers;

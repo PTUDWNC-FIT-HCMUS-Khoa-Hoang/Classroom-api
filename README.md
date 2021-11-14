@@ -18,9 +18,9 @@ This is a web application for my Web Development course on my university.
 
 #### Classrooms
 
-1.  Get owned classrooms
+1.  Get all related classrooms
     - **Method**: GET
-    - **Route**: /classrooms/owned
+    - **Route**: /classrooms/
     - **Header**: {
       Authorization: `Bearer ${token}`
       }
