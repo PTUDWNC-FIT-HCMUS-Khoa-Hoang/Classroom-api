@@ -10,6 +10,7 @@ userRoutes.get('/other/:id', authMiddleware, userControllers.getOneById);
 userRoutes.post('/register', userControllers.register);
 userRoutes.post('/login', userControllers.login);
 //======================== PUT ========================
+userRoutes.put('/me', authMiddleware, userControllers.putOne);
 //======================== DELETE ========================
 
 export default userRoutes;

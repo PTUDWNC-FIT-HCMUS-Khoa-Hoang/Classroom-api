@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  studentId: {
+    type: String,
+    unique: true,
+    index: true,
+  },
   isVerified: {
     type: Boolean,
     default: false,

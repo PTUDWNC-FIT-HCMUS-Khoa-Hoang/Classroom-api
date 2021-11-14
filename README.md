@@ -21,22 +21,31 @@ This is a web application for my Web Development course on my university.
 1.  Get all related classrooms
     - **Method**: GET
     - **Route**: /classrooms/
-    - **Header**: {
-      Authorization: `Bearer ${token}`
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
       }
+      ```
 2.  Get one by id
     - **Method**: GET
     - **Route**: /classrooms/:id
-    - **Header**: {
-      Authorization: `Bearer ${token}`
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
       }
+      ```
 3.  Post one
 
     - **Method**: POST
     - **Route**: /classrooms
-    - **Header**: {
-      Authorization: `Bearer ${token}`
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
       }
+      ```
     - **Body**:
 
     ```javascript
@@ -87,3 +96,25 @@ This is a web application for my Web Development course on my university.
        password: String
    }
    ```
+
+3. Update profile
+
+   - **Method**: PUT
+   - **Route**: /users/me
+   - **Body**:
+
+   ```javascript
+   {
+       email: String,
+       password: String,
+       fullname: String,
+       studentId: String
+   }
+   ```
+
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
