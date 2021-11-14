@@ -7,13 +7,21 @@ const getOnePrivate = async (req, res) => {
   const { id } = req.params;
   try {
     //   Check if this user has relationship with this classroom
-    const ownedClassroom = await Classroom.findOne({ owner: userId, _id: id });
-    const participatedClassroom = await UserClassroom.findOne({
+    // Owned classroom
+    const ownedClassroom = await Classroom.findOne({
+      owner: userId,
+      _id: id,
+    }).populate('owner');
+    // Participated classroom
+    const userClassroom = await UserClassroom.findOne({
       userId,
       classroomId: id,
     });
+    const participatedClassroom = await Classroom.findById(id).populate(
+      'owner'
+    );
 
-    if (!ownedClassroom && !participatedClassroom) {
+    if (!ownedClassroom && !userClassroom) {
       throw new Error('Classroom not found!');
     }
 
