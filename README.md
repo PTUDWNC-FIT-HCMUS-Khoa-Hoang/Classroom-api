@@ -130,3 +130,35 @@ This is a web application for my Web Development course on my university.
        Authorization: `Bearer ${token}`;
      }
      ```
+
+#### Invitation
+
+1. Accept classroom invitation (get accept classroom)
+   - **Method**: GET
+   - **Route**: /invitation/classroom/accept/:invitationId
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
+2. Create classroom invitation (post classroom)
+
+   - **Method**: POST
+   - **Route**: /invitation/classroom
+   - **Header**:
+
+   ```javascript
+   {
+     Authorization: `Bearer ${token}`;
+   }
+   ```
+
+   - **Body**:
+
+   ```javascript
+   {
+       classroomId: ObjectId,
+       role: 'teacher'
+   }
+   ```
