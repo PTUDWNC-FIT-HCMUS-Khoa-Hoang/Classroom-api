@@ -9,6 +9,11 @@ joinClassroomRoutes.get(
   authMiddleware,
   userClassroomControllers.check
 );
+joinClassroomRoutes.get(
+  '/code/:invitationCode',
+  authMiddleware,
+  userClassroomControllers.getByInvitationCode
+);
 // ======================== POST ========================
 // ======================== PUT ========================
 // ======================== DELETE ========================

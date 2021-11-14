@@ -122,8 +122,19 @@ This is a web application for my Web Development course on my university.
 #### User Classroom (Join classroom)
 
 1. Check participation
+
    - **Method**: GET
    - **Route**: /join-classroom/check/:id
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
+
+2. Get by invitation code (join classroom by invitation code)
+   - **Method**: GET
+   - **Route**: /join-classroom/code/:invitationCode
    - **Header**:
      ```javascript
      {
