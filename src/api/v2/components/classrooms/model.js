@@ -7,6 +7,13 @@ const classroomSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    subTitle: {
+      type: String,
+    },
+    invitationCode: {
+      type: String,
+      index: true,
+    },
     gradings: [
       {
         title: {

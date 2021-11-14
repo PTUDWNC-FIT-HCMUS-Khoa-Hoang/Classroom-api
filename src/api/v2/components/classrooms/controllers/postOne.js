@@ -1,3 +1,4 @@
+import generateUUID from '../../../helpers/generateUUID';
 import Classroom from '../model';
 import validateClassroom from '../validations';
 
@@ -6,10 +7,22 @@ const postOne = async (req, res) => {
   try {
     // Validating
     const isDataValidate = validateClassroom(req.body);
+    // Create invitation code
+    const existedInvitationCodes = await Classroom.find({}, 'invitationCode');
+    let invitationCode = '';
+    do {
+      invitationCode = generateUUID(7);
+    } while (existedInvitationCodes.includes(invitationCode));
+    // let invitationCode;
+    // do {
+    //   invitationCode = generateUUID(7);
+    //   const foundCode = await Classroom.findOne({ invitationCode });
+    // } while (foundCode);
     // Add owner
     const preCreateClassroom = {
       ...req.body,
       owner: userId,
+      invitationCode,
     };
     // Create new classroom document
     const classroom = new Classroom(preCreateClassroom);
