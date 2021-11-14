@@ -47,27 +47,29 @@ This is a web application for my Web Development course on my university.
       }
       ```
     - **Body**:
-
-    ```javascript
-    title: {
-      type: String,
-      required: true,
-    },
-    gradings: [
-      {
-        title: {
-          type: String,
-          required: true,
-        },
-        ratio: {
-          type: Number,
-          required: true,
-          min: 0,
-          max: 1,
-        },
+      ```javascript
+      title: {
+        type: String,
+        required: true,
       },
-    ]
-    ```
+      subTitle: {
+        type: String
+      },
+      gradings: [
+        {
+          title: {
+            type: String,
+            required: true,
+          },
+          ratio: {
+            type: Number,
+            required: true,
+            min: 0,
+            max: 1,
+          },
+        },
+      ]
+      ```
 
 #### Users
 
@@ -104,12 +106,12 @@ This is a web application for my Web Development course on my university.
    - **Body**:
 
    ```javascript
-   {
-       email: String,
-       password: String,
-       fullname: String,
-       studentId: String
-   }
+    {
+        email: String,
+        password: String,
+        fullname: String,
+        studentId: String
+    }
    ```
 
    - **Header**:
