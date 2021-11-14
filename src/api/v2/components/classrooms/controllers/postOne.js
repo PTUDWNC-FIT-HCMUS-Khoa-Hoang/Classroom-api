@@ -8,7 +8,13 @@ const postOne = async (req, res) => {
     // Validating
     const isDataValidate = validateClassroom(req.body);
     // Create invitation code
-    const existedInvitationCodes = await Classroom.find({}, 'invitationCode');
+    const classroomWithInvitationCodes = await Classroom.find(
+      {},
+      'invitationCode'
+    );
+    const existedInvitationCodes = classroomWithInvitationCodes.map(
+      (classroom) => classroom.invitationCode
+    );
     let invitationCode = '';
     do {
       invitationCode = generateUUID(7);
