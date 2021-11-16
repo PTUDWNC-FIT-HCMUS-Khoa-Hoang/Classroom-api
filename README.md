@@ -78,38 +78,39 @@ This is a web application for my Web Development course on my university.
    - **Method**: POST
    - **Route**: /users/login
    - **Body**:
-       ```javascript
-       {
-           email: String,
-           password: String
-       }
-       ```
+     ```javascript
+     {
+         email: String,
+         password: String
+     }
+     ```
 
 2. Register
 
    - **Method**: POST
    - **Route**: /users/register
    - **Body**:
-       ```javascript
-       {
-           email: String,
-           password: String
-       }
-       ```
+     ```javascript
+     {
+         email: String,
+         password: String
+     }
+     ```
 
 3. Update profile
 
    - **Method**: PUT
    - **Route**: /users/me
    - **Body**:
-       ```javascript
-        {
-            email: String,
-            password: String,
-            fullname: String,
-            studentId: String
-        }
-       ```
+
+     ```javascript
+      {
+          email: String,
+          password: String,
+          fullname: String,
+          studentId: String
+      }
+     ```
 
    - **Header**:
      ```javascript
@@ -157,16 +158,18 @@ This is a web application for my Web Development course on my university.
    - **Method**: POST
    - **Route**: /invitation/classroom
    - **Header**:
-       ```javascript
-       {
-         Authorization: `Bearer ${token}`;
-       }
-       ```
+
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
 
    - **Body**:
-       ```javascript
-       {
-           classroomId: ObjectId,
-           role: 'teacher'
-       }
-       ```
+     ```javascript
+     {
+         userId: ObjectId,
+         classroomId: ObjectId,
+         role: 'teacher'
+     }
+     ```
