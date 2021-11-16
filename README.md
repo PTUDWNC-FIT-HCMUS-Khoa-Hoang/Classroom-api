@@ -168,8 +168,7 @@ This is a web application for my Web Development course on my university.
    - **Body**:
      ```javascript
      {
-         userId: ObjectId,
-         classroomId: ObjectId,
-         role: 'teacher'
+         userEmail: String,
+         classroomId: String,
      }
      ```

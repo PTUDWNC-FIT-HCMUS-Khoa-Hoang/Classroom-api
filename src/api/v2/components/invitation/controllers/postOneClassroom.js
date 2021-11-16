@@ -1,13 +1,23 @@
 import Invitation from '../model';
+import Classroom from '../../classrooms/model';
 
 const postOneClassroom = async (req, res) => {
   const userId = req.user.id;
-  const { classroomId, role } = req.body;
+  const { classroomId, userEmail } = req.body;
   try {
+    // Check if this one is the owner
+    const classroom = await Classroom.findOne({
+      owner: userId,
+      _id: classroomId,
+    });
+    if (!classroom) {
+      throw new Error('You are not the owner of this classroom');
+    }
+    // Create invitation
     const classroomInvitation = new Invitation({
-      userId,
+      userEmail,
       classroomId,
-      role: role || 'teacher',
+      role: 'teacher',
     });
     await classroomInvitation.save();
     res.status(201).send({

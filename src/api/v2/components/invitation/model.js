@@ -2,9 +2,8 @@ import mongoose from 'mongoose';
 
 const invitationSchema = new mongoose.Schema(
   {
-    userId: {
-      type: mongoose.Types.ObjectId,
-      ref: 'User',
+    userEmail: {
+      type: String,
       required: true,
     },
     classroomId: {
