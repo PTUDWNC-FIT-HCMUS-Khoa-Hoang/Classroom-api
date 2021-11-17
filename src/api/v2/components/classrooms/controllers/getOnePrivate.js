@@ -31,8 +31,10 @@ const getOnePrivate = async (req, res) => {
     const participants = await Promise.all(
       userClassrooms.map(async (userClassroom) => {
         const user = await User.findById(userClassroom.userId);
-        const { fullname } = user;
+        const { fullname, _id, email } = user;
         return {
+          _id,
+          email,
           fullname,
           role: userClassroom.role,
         };
