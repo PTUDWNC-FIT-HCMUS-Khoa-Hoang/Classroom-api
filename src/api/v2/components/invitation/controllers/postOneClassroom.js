@@ -1,25 +1,43 @@
 import Invitation from '../model';
 import Classroom from '../../classrooms/model';
+import ROLES from '../../user_classroom/constants/roles';
+import sendMailByGmail from '../../mails/services/gmail';
 
 const postOneClassroom = async (req, res) => {
   const userId = req.user.id;
-  const { classroomId, userEmail } = req.body;
+  const { classroomId, userEmail, role } = req.body;
   try {
-    // Check if this one is the owner
-    const classroom = await Classroom.findOne({
-      owner: userId,
-      _id: classroomId,
-    });
-    if (!classroom) {
-      throw new Error('You are not the owner of this classroom');
+    if (role === ROLES.teacher) {
+      // Check if this one is the owner
+      const classroom = await Classroom.findOne({
+        owner: userId,
+        _id: classroomId,
+      });
+      if (!classroom) {
+        throw new Error('You are not the owner of this classroom');
+      }
     }
     // Create invitation
     const classroomInvitation = new Invitation({
       userEmail,
       classroomId,
-      role: 'teacher',
+      role,
     });
     await classroomInvitation.save();
+    // Send mail
+    const classroom = await Classroom.findById(classroomId);
+    const invitationUrl = `${process.env.FRONTEND_HOST}/join/${classroom._id}?invitation=${classroomInvitation._id}`;
+    const html = `
+      <h1>Classroom Invitation</h1>
+      <p>You have an invitation to join a classroom: "${classroom.title}" by <strong>${req.user.email}</strong></p>
+      <a href="${invitationUrl}">Join now</a>
+    `;
+    const info = await sendMailByGmail({
+      receiverEmail: userEmail,
+      subject: 'Classroom invitation',
+      html,
+    });
+    // Response
     res.status(201).send({
       acceptUrl:
         req.protocol +
@@ -28,6 +46,8 @@ const postOneClassroom = async (req, res) => {
         req.baseUrl +
         '/classroom/accept/' +
         classroomInvitation._id,
+      message: 'Email has been sent',
+      info,
     });
   } catch (error) {
     res.status(400).send({
