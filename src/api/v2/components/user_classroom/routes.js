@@ -5,7 +5,7 @@ const joinClassroomRoutes = express.Router();
 
 // ======================== GET ========================
 joinClassroomRoutes.get(
-  '/check/:id',
+  '/check/:classroomId',
   authMiddleware,
   userClassroomControllers.check
 );
