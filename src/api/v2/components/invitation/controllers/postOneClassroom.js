@@ -1,5 +1,6 @@
 import Invitation from '../model';
 import Classroom from '../../classrooms/model';
+import UserClassroom from '../../user_classroom/model';
 import ROLES from '../../user_classroom/constants/roles';
 import sendMailByGmail from '../../mails/services/gmail';
 
