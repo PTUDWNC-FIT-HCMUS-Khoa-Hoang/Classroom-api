@@ -13,7 +13,7 @@ const invitationSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'teacher',
+      default: 'student',
     },
     isPendding: {
       type: Boolean,
