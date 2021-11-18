@@ -11,7 +11,10 @@ const getByInvitationCode = async (req, res) => {
       throw new Error('Invalid invitation code!');
     }
     //   Check if this user has been enrolled to the classroom
-    const ownedClassroom = await Classroom.findOne({ owner: userId });
+    const ownedClassroom = await Classroom.findOne({
+      _id: classroom._id,
+      owner: userId,
+    });
     const existedUserClassroom = await UserClassroom.findOne({
       userId,
       classroomId: classroom._id,
