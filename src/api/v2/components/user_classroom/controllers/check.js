@@ -9,12 +9,16 @@ const check = async (req, res) => {
       userId,
       classroomId,
     });
-    const ownedClassroom = await Classroom.findOne({ owner: userId });
-    if (!userClassroom && !ownedClassroom) {
+    const ownedClassroom = await Classroom.findOne({
+      _id: classroomId,
+      owner: userId,
+    });
+    const classroom = userClassroom || ownedClassroom;
+    if (!classroom) {
       throw new Error('Not found!');
     }
 
-    res.status(200).send();
+    res.status(200).send(classroom);
   } catch (error) {
     res.status(400).send({
       message: error.message,
