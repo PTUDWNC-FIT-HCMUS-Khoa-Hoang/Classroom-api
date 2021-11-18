@@ -124,7 +124,7 @@ This is a web application for my Web Development course on my university.
 1. Check participation
 
    - **Method**: GET
-   - **Route**: /join-classroom/check/:id
+   - **Route**: /join-classroom/check/:classroomId
    - **Header**:
      ```javascript
      {
@@ -170,5 +170,6 @@ This is a web application for my Web Development course on my university.
      {
          userEmail: String,
          classroomId: String,
+         role: 'teacher' | 'student'
      }
      ```
