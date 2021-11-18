@@ -1,6 +1,7 @@
 import Invitation from '../model';
 import Classroom from '../../classrooms/model';
 import UserClassroom from '../../user_classroom/model';
+import User from '../../users/model';
 import ROLES from '../../user_classroom/constants/roles';
 import sendMailByGmail from '../../mails/services/gmail';
 
@@ -9,12 +10,13 @@ const postOneClassroom = async (req, res) => {
   const { classroomId, userEmail, role } = req.body;
   try {
     // Check if this user has joined the classroom or not
+    const invitedUser = await User.findOne({ email: userEmail });
     const ownedClassroom = await Classroom.findOne({
       _id: classroomId,
-      owner: userId,
+      owner: invitedUser._id,
     });
     const existedUserClassroom = await UserClassroom.findOne({
-      userId,
+      userId: invitedUser._id,
       classroomId,
       role,
     });
