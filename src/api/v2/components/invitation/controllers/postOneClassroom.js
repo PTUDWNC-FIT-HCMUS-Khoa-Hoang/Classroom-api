@@ -7,6 +7,20 @@ const postOneClassroom = async (req, res) => {
   const userId = req.user.id;
   const { classroomId, userEmail, role } = req.body;
   try {
+    // Check if this user has joined the classroom or not
+    const ownedClassroom = await Classroom.findOne({
+      _id: classroomId,
+      owner: userId,
+    });
+    const existedUserClassroom = await UserClassroom.findOne({
+      userId,
+      classroomId,
+      role,
+    });
+    if (ownedClassroom || existedUserClassroom) {
+      throw new Error('You have joined this classroom');
+    }
+
     if (role === ROLES.teacher) {
       // Check if this one is the owner
       const classroom = await Classroom.findOne({
