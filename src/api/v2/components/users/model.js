@@ -47,6 +47,7 @@ userSchema.methods.generateToken = function () {
     {
       data: {
         id: user._id.toString(),
+        email: user.email,
         isVerified: user.isVerified,
       },
     },
