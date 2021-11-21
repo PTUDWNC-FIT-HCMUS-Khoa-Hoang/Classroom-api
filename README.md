@@ -75,6 +75,8 @@ This is a web application for my Web Development course on my university.
 
 1. Login
 
+   a. Email
+
    - **Method**: POST
    - **Route**: /users/login
    - **Body**:
@@ -82,6 +84,17 @@ This is a web application for my Web Development course on my university.
      {
          email: String,
          password: String
+     }
+     ```
+
+   b. Google
+
+   - **Method**: POST
+   - **Route**: /users/login/google
+   - **Body**:
+     ```javascript
+     {
+       tokenId: String; //tokenId retrieved from Google
      }
      ```
 
