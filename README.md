@@ -131,10 +131,10 @@ This is a web application for my Web Development course on my university.
 
      ```javascript
       {
-          email: String,
-          password: String,
-          fullname: String,
-          studentId: String
+          currentPassword: String,
+          password?: String,
+          fullname?: String,
+          studentId?: String
       }
      ```
 
