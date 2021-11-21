@@ -14,8 +14,17 @@ const check = async (req, res) => {
       owner: userId,
     });
     const classroom = userClassroom || ownedClassroom;
+    const targetClassroom = await Classroom.findById(classroomId);
     if (!classroom) {
-      throw new Error('Not found!');
+      if (!targetClassroom) {
+        throw new Error('Classroom not found!');
+      }
+      return res.status(400).send({
+        message: 'Not joined this classroom',
+        classroom: {
+          title: targetClassroom.title,
+        },
+      });
     }
 
     res.status(200).send(classroom);
