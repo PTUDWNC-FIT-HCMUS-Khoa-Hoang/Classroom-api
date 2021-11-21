@@ -8,9 +8,9 @@ const googleAccountVerification = async (googleTokenId) => {
     const accountInformation = response.data;
     return accountInformation;
   } catch (error) {
-    throw new Error({
-      message: error.message,
-    });
+    throw new Error(
+      `There is a problem with Google authentication: ${error.response.data.error}`
+    );
   }
 };
 

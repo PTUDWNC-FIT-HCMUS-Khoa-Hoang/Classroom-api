@@ -10,6 +10,7 @@ userRoutes.get('/other/:id', authMiddleware, userControllers.getOneById);
 userRoutes.post('/register', userControllers.register);
 userRoutes.post('/register/google', userControllers.registerGoogle);
 userRoutes.post('/login', userControllers.login);
+userRoutes.post('/login/google', userControllers.loginGoogle);
 //======================== PUT ========================
 userRoutes.put('/me', authMiddleware, userControllers.putOne);
 //======================== DELETE ========================

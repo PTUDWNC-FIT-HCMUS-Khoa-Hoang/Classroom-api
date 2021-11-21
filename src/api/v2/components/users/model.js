@@ -41,6 +41,7 @@ userSchema.methods.toJSON = function () {
   const userObject = this.toObject();
   delete userObject.password;
   delete userObject.secretOtp;
+  delete userObject.googleId;
   return userObject;
 };
 
