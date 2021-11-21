@@ -8,6 +8,7 @@ const userRoutes = express.Router();
 userRoutes.get('/other/:id', authMiddleware, userControllers.getOneById);
 //======================== POST ========================
 userRoutes.post('/register', userControllers.register);
+userRoutes.post('/register/google', userControllers.registerGoogle);
 userRoutes.post('/login', userControllers.login);
 //======================== PUT ========================
 userRoutes.put('/me', authMiddleware, userControllers.putOne);

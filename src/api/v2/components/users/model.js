@@ -32,6 +32,9 @@ const userSchema = new mongoose.Schema({
   secretOtp: {
     type: String,
   },
+  googleId: {
+    type: String,
+  },
 });
 
 userSchema.methods.toJSON = function () {
