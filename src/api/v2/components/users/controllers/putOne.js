@@ -31,9 +31,9 @@ const putOne = async (req, res) => {
 
     // Update user
     const user = await User.findById(userId);
-    user.fullname = req.body.fullname;
+    user.fullname = req.body.fullname || user.fullname;
     user.password = req.body.password || user.password;
-    user.studentId = req.body.studentId;
+    user.studentId = req.body.studentId || user.studentId;
     const updatedUser = await user.save();
     res.send(updatedUser);
   } catch (error) {
