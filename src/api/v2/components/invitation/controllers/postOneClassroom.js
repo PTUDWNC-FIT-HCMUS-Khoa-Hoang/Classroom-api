@@ -11,17 +11,19 @@ const postOneClassroom = async (req, res) => {
   try {
     // Check if this user has joined the classroom or not
     const invitedUser = await User.findOne({ email: userEmail });
-    const ownedClassroom = await Classroom.findOne({
-      _id: classroomId,
-      owner: invitedUser._id,
-    });
-    const existedUserClassroom = await UserClassroom.findOne({
-      userId: invitedUser._id,
-      classroomId,
-      role,
-    });
-    if (ownedClassroom || existedUserClassroom) {
-      throw new Error('You have joined this classroom');
+    if (invitedUser) {
+      const ownedClassroom = await Classroom.findOne({
+        _id: classroomId,
+        owner: invitedUser._id,
+      });
+      const existedUserClassroom = await UserClassroom.findOne({
+        userId: invitedUser._id,
+        classroomId,
+        role,
+      });
+      if (ownedClassroom || existedUserClassroom) {
+        throw new Error('You have joined this classroom');
+      }
     }
 
     if (role === ROLES.teacher) {
