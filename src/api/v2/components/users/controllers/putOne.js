@@ -15,17 +15,20 @@ const putOne = async (req, res) => {
     }
 
     // Check current password
-    if (!currentPassword) {
-      throw new Error(CURRENT_PASSWORD_NOT_MATCHED_ERROR);
+    if (req.body.password) {
+      if (!currentPassword) {
+        throw new Error(CURRENT_PASSWORD_NOT_MATCHED_ERROR);
+      }
+      const userFoundById = await User.findById(userId);
+      const isPasswordValid = bcrypt.compareSync(
+        currentPassword,
+        userFoundById.password
+      );
+      if (!isPasswordValid) {
+        throw new Error(CURRENT_PASSWORD_NOT_MATCHED_ERROR);
+      }
     }
-    const userFoundById = await User.findById(userId);
-    const isPasswordValid = bcrypt.compareSync(
-      currentPassword,
-      userFoundById.password
-    );
-    if (!isPasswordValid) {
-      throw new Error(CURRENT_PASSWORD_NOT_MATCHED_ERROR);
-    }
+
     // Update user
     const user = await User.findById(userId);
     user.fullname = req.body.fullname;
