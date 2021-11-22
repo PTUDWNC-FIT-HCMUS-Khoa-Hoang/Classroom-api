@@ -28,18 +28,10 @@ const postOneClassroom = async (req, res) => {
 
     if (role === ROLES.teacher) {
       // Check if this one is the owner
-      console.log('User logged in: ', req.user);
       const classroom = await Classroom.findOne({
         owner: userId,
         _id: classroomId,
       });
-      const allClassrooms = await Classroom.find({
-        owner: userId,
-      });
-      console.log(
-        '🚀 ~ file: postOneClassroom.js ~ line 39 ~ postOneClassroom ~ allClassrooms',
-        allClassrooms
-      );
       if (!classroom) {
         throw new Error('You are not the owner of this classroom');
       }
