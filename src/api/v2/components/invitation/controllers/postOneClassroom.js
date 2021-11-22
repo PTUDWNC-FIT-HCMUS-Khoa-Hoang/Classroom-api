@@ -33,9 +33,12 @@ const postOneClassroom = async (req, res) => {
         owner: userId,
         _id: classroomId,
       });
+      const allClassrooms = await Classroom.find({
+        owner: userId,
+      });
       console.log(
-        '🚀 ~ file: postOneClassroom.js ~ line 36 ~ postOneClassroom ~ classroom',
-        classroom
+        '🚀 ~ file: postOneClassroom.js ~ line 39 ~ postOneClassroom ~ allClassrooms',
+        allClassrooms
       );
       if (!classroom) {
         throw new Error('You are not the owner of this classroom');
