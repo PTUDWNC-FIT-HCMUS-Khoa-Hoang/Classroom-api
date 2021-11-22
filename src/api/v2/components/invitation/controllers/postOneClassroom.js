@@ -33,6 +33,10 @@ const postOneClassroom = async (req, res) => {
         owner: userId,
         _id: classroomId,
       });
+      console.log(
+        '🚀 ~ file: postOneClassroom.js ~ line 36 ~ postOneClassroom ~ classroom',
+        classroom
+      );
       if (!classroom) {
         throw new Error('You are not the owner of this classroom');
       }
