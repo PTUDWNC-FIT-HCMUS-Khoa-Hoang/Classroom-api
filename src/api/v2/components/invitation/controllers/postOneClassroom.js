@@ -28,12 +28,20 @@ const postOneClassroom = async (req, res) => {
 
     if (role === ROLES.teacher) {
       // Check if this one is the owner
-      const classroom = await Classroom.findOne({
+      const ownedClassroom = await Classroom.findOne({
         owner: userId,
         _id: classroomId,
       });
+      const teachingClassroom = await UserClassroom.findOne({
+        userId,
+        classroomId,
+        role: ROLES.teacher,
+      });
+      const classroom = ownedClassroom || teachingClassroom;
       if (!classroom) {
-        throw new Error('You are not the owner of this classroom');
+        throw new Error(
+          'You are not either the owner nor teacher of this classroom'
+        );
       }
     }
     // Create invitation
