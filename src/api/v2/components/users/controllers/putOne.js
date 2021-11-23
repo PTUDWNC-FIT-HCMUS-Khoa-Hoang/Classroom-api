@@ -1,7 +1,7 @@
 import User from '../model';
 import bcrypt from 'bcrypt';
 
-const CURRENT_PASSWORD_NOT_MATCHED_ERROR = 'Current password is not matched';
+const CURRENT_PASSWORD_NOT_MATCHED_ERROR = 'Mật khẩu không trùng khớp!';
 
 const putOne = async (req, res) => {
   const userId = req.user.id;
@@ -10,7 +10,7 @@ const putOne = async (req, res) => {
     if (studentId) {
       const student = await User.findOne({ studentId });
       if (student) {
-        throw new Error('Existed student ID!');
+        throw new Error('Mã số sinh viên đã tồn tại!');
       }
     }
 
