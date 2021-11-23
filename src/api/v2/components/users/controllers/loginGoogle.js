@@ -7,7 +7,7 @@ const loginGoogle = async (req, res) => {
   const { tokenId } = req.body;
   try {
     if (!tokenId) {
-      throw new Error('Invalid information');
+      throw new Error('Thông tin đăng nhập không hợp lệ');
     }
     const googleAccountInformation = await googleAccountVerification(tokenId);
     const { email, sub: googleId, name: fullname } = googleAccountInformation;
@@ -19,7 +19,7 @@ const loginGoogle = async (req, res) => {
     if (!userFoundByGoogleId) {
       if (userFoundByEmail) {
         throw new Error(
-          `This account's email has not been linked with Google. Please login by your email`
+          `Tài khoản với email này chưa được liên kết với Google. Vui lòng đăng nhập bằng email.`
         );
       } else {
         const password = generateUUID(32);

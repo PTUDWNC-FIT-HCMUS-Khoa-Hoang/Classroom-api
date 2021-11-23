@@ -2,7 +2,7 @@ import User from '../model';
 import bcrypt from 'bcrypt';
 import parseErrorIntoMessage from '../../../helpers/parseErrorIntoMessage';
 
-const NOT_FOUND_USER_ERROR_MESSAGE = 'Email or password is incorrect!';
+const NOT_FOUND_USER_ERROR_MESSAGE = 'Email hoặc mật khẩu không đúng!';
 
 const login = async (req, res) => {
   const { email, password } = req.body;
