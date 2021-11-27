@@ -6,7 +6,7 @@ const postOne = async (req, res) => {
   const userId = req.user.id;
   try {
     // Validating
-    const isDataValidate = validateClassroom(req.body);
+    // const isDataValidate = validateClassroom(req.body);
     // Create invitation code
     const classroomWithInvitationCodes = await Classroom.find(
       {},
