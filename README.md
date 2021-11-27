@@ -55,18 +55,10 @@ This is a web application for my Web Development course on my university.
       subTitle: {
         type: String
       },
-      gradings: [
+      gradeStructure: [
         {
-          title: {
-            type: String,
-            required: true,
-          },
-          ratio: {
-            type: Number,
-            required: true,
-            min: 0,
-            max: 1,
-          },
+          title: String,
+          grade: Number,
         },
       ]
       ```
