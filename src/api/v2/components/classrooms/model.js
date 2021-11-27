@@ -14,17 +14,15 @@ const classroomSchema = new mongoose.Schema(
       type: String,
       index: true,
     },
-    gradings: [
+    gradeStructure: [
       {
         title: {
           type: String,
           required: true,
         },
-        ratio: {
+        grade: {
           type: Number,
           required: true,
-          min: 0,
-          max: 1,
         },
       },
     ],
