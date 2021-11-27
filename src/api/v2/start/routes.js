@@ -1,3 +1,4 @@
+import assignmentRoutes from '../components/assignments/routes';
 import classroomRoutes from '../components/classrooms/routes';
 import invitationRoutes from '../components/invitation/routes';
 import userRoutes from '../components/users/routes';
@@ -8,6 +9,7 @@ const startRoutes = (app) => {
   app.use('/classrooms', classroomRoutes);
   app.use('/join-classroom', joinClassroomRoutes);
   app.use('/invitation', invitationRoutes);
+  app.use('/assignments', assignmentRoutes);
 
   //404
   app.use((req, res, next) => {
