@@ -3,7 +3,7 @@ import checkRole from '../../classrooms/helpers/checkRole';
 import Assignment from '../model';
 
 const postOne = async (req, res) => {
-  const { title, grade, classroomId } = req.body;
+  const { title, grade, classroomId, displayOrder } = req.body;
   const userId = req.user.id;
   try {
     // Check role
@@ -17,6 +17,7 @@ const postOne = async (req, res) => {
       title,
       grade,
       classroomId,
+      displayOrder,
     });
     await assignment.save();
     res.status(201).send(assignment);
