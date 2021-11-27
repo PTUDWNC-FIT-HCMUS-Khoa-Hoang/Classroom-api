@@ -1,6 +1,6 @@
 import Classroom from '../../classrooms/model';
 import UserClassroom from '../model';
-import ROLES from '../constants/roles';
+import ROLES from '../../../constants/role';
 
 const getByInvitationCode = async (req, res) => {
   const responseObject = {

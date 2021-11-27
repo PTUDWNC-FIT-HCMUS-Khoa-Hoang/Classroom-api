@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import ROLES from './constants/roles';
+import ROLES from '../../constants/role';
 
 const userClassroomSchema = new mongoose.Schema({
   userId: {

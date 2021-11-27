@@ -2,7 +2,7 @@ import Invitation from '../model';
 import Classroom from '../../classrooms/model';
 import UserClassroom from '../../user_classroom/model';
 import User from '../../users/model';
-import ROLES from '../../user_classroom/constants/roles';
+import ROLES from '../../../constants/role';
 import sendMailByGmail from '../../mails/services/gmail';
 
 const postOneClassroom = async (req, res) => {
