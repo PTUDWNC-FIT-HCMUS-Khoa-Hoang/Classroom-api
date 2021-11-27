@@ -98,7 +98,29 @@ This is a web application for my Web Development course on my university.
         grade: Number
       }
       ```
-3.  Delete an assignment
+3.  Update multiple assignments
+    - **Method**: PUT
+    - **Route**: /assignments/
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      {
+        assignments: [
+          {
+            _id: String,
+            title: String,
+            grade: Number,
+            displayOrder: Number,
+          },
+        ];
+      }
+      ```
+4.  Delete an assignment
     - **Method**: DELETE
     - **Route**: /assignments/:id
     - **Header**:
