@@ -11,15 +11,17 @@ const getOnePrivate = async (req, res) => {
     const ownedClassroom = await Classroom.findOne({
       owner: userId,
       _id: id,
-    }).populate('owner');
+    })
+      .populate('owner')
+      .populate('assignments');
     // Participated classroom
     const userClassroom = await UserClassroom.findOne({
       userId,
       classroomId: id,
     });
-    const participatedClassroom = await Classroom.findById(id).populate(
-      'owner'
-    );
+    const participatedClassroom = await Classroom.findById(id)
+      .populate('owner')
+      .populate('assignments');
 
     if (!ownedClassroom && !userClassroom) {
       throw new Error('Classroom not found!');
