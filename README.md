@@ -82,6 +82,31 @@ This is a web application for my Web Development course on my university.
         classroomId: String
       }
       ```
+2.  Update an assignment
+    - **Method**: PUT
+    - **Route**: /assignments/:id
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      {
+        title: String,
+        grade: Number
+      }
+      ```
+3.  Delete an assignment
+    - **Method**: DELETE
+    - **Route**: /assignments/:id
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
 
 #### Users
 
