@@ -7,6 +7,7 @@ const assignmentRoutes = express.Router();
 // ======================== POST ========================
 assignmentRoutes.post('/', authMiddleware, assignmentControllers.postOne);
 // ======================== PUT ========================
+assignmentRoutes.put('/', authMiddleware, assignmentControllers.putMany);
 assignmentRoutes.put('/:id', authMiddleware, assignmentControllers.putOne);
 // ======================== DELETE ========================
 assignmentRoutes.delete(
