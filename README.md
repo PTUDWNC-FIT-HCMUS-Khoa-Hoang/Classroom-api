@@ -63,6 +63,26 @@ This is a web application for my Web Development course on my university.
       ]
       ```
 
+#### Assignments
+
+1.  Create an assignment
+    - **Method**: POST
+    - **Route**: /assignments/
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      {
+        title: String,
+        grade: Number,
+        classroomId: String
+      }
+      ```
+
 #### Users
 
 1. Login
