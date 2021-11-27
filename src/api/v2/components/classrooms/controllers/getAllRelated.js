@@ -10,17 +10,17 @@ const getAllRelated = async (req, res) => {
     });
     const participatedClassrooms = await Promise.all(
       userClassrooms.map(async (userClassroom) => {
-        const classroom = await Classroom.findById(
-          userClassroom.classroomId
-        ).populate({ path: 'owner' });
+        const classroom = await Classroom.findById(userClassroom.classroomId)
+          .populate({ path: 'owner' })
+          .populate({ path: 'assignments' });
         return classroom;
       })
     );
 
     // Owned classrooms
-    const ownedClassrooms = await Classroom.find({ owner: userId }).populate(
-      'owner'
-    );
+    const ownedClassrooms = await Classroom.find({ owner: userId })
+      .populate({ path: 'owner' })
+      .populate({ path: 'assignments' });
     res.status(200).send([...ownedClassrooms, ...participatedClassrooms]);
   } catch (error) {
     res.status(400).send({
