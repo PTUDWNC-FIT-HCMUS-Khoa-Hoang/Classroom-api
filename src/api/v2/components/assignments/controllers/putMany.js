@@ -26,7 +26,10 @@ const putMany = async (req, res) => {
         });
         const updatedAssignment = await Assignment.findByIdAndUpdate(
           assignment._id,
-          updateObject
+          updateObject,
+          {
+            new: true,
+          }
         );
         updatedAssignments.push(updatedAssignment);
       })

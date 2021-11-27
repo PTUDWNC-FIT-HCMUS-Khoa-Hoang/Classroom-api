@@ -15,10 +15,16 @@ const putOne = async (req, res) => {
       roles: [ROLES.TEACHER],
     });
     // Update assignment
-    const updatedAssignment = await Assignment.findByIdAndUpdate(assignmentId, {
-      title,
-      grade,
-    });
+    const updatedAssignment = await Assignment.findByIdAndUpdate(
+      assignmentId,
+      {
+        title,
+        grade,
+      },
+      {
+        new: true,
+      }
+    );
     res.status(200).send(updatedAssignment);
   } catch (error) {
     res.status(400).send({
