@@ -13,7 +13,14 @@ const getOnePrivate = async (req, res) => {
       _id: id,
     })
       .populate('owner')
-      .populate('assignments');
+      .populate({
+        path: 'assignments',
+        options: {
+          sort: {
+            displayOrder: 1,
+          },
+        },
+      });
     // Participated classroom
     const userClassroom = await UserClassroom.findOne({
       userId,
@@ -21,7 +28,14 @@ const getOnePrivate = async (req, res) => {
     });
     const participatedClassroom = await Classroom.findById(id)
       .populate('owner')
-      .populate('assignments');
+      .populate({
+        path: 'assignments',
+        options: {
+          sort: {
+            displayOrder: 1,
+          },
+        },
+      });
 
     if (!ownedClassroom && !userClassroom) {
       throw new Error('Classroom not found!');
