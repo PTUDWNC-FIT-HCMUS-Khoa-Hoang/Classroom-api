@@ -34,8 +34,16 @@ const classroomSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+classroomSchema.virtual('assignments', {
+  ref: 'Assignment',
+  localField: '_id',
+  foreignField: 'classroomId',
+});
 
 const Classroom = mongoose.model('Classroom', classroomSchema);
 
