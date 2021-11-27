@@ -1,8 +1,17 @@
+import ROLES from '../../../constants/role';
+import checkRole from '../../classrooms/helpers/checkRole';
 import Assignment from '../model';
 
 const postOne = async (req, res) => {
   const { title, grade, classroomId } = req.body;
+  const userId = req.user.id;
   try {
+    // Check role
+    await checkRole({
+      userId,
+      classroomId,
+      roles: [ROLES.TEACHER],
+    });
     // Create assignment
     const assignment = new Assignment({
       title,
