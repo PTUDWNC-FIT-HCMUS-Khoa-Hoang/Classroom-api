@@ -8,5 +8,10 @@ const assignmentRoutes = express.Router();
 assignmentRoutes.post('/', authMiddleware, assignmentControllers.postOne);
 // ======================== PUT ========================
 // ======================== DELETE ========================
+assignmentRoutes.delete(
+  '/:id',
+  authMiddleware,
+  assignmentControllers.deleteOne
+);
 
 export default assignmentRoutes;
