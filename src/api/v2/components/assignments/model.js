@@ -14,6 +14,9 @@ const assignmentSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       required: true,
     },
+    displayOrder: {
+      type: Number,
+    },
   },
   {
     timestamps: true,
