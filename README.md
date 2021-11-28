@@ -63,6 +63,29 @@ This is a web application for my Web Development course on my university.
       ]
       ```
 
+4.  Update one by id (teacher, owner only)
+    - **Method**: PUT
+    - **Route**: /classrooms/:id
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      title?: String,
+      subTitle?: String,
+      invitationCode?: String,
+      gradeStructure?: [
+        {
+          title: String,
+          grade: Number,
+          _id?: String
+        },
+      ]
+      ```
+
 #### Assignments
 
 1.  Create an assignment
