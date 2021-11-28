@@ -9,6 +9,7 @@ classroomRoutes.get('/:id', authMiddleware, classroomControllers.getOnePrivate);
 // ======================== POST ========================
 classroomRoutes.post('/', authMiddleware, classroomControllers.postOne);
 // ======================== PUT ========================
+classroomRoutes.put('/:id', authMiddleware, classroomControllers.putOnePrivate);
 // ======================== DELETE ========================
 
 export default classroomRoutes;
