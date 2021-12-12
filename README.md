@@ -155,9 +155,9 @@ This is a web application for my Web Development course on my university.
       }
       ```
 
-3.  Get data in csv format
+3.  Get data in csv format by grade
     - **Method**: GET
-    - **Route**: /grade-detail/csv/:classroomId
+    - **Route**: /grade-detail/csv/:classroomId/:gradeId
     - **Header**:
       ```javascript
       {
