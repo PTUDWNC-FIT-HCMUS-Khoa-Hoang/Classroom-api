@@ -48,22 +48,24 @@ This is a web application for my Web Development course on my university.
       ```
     - **Body**:
       ```javascript
-      title: {
-        type: String,
-        required: true,
-      },
-      subTitle: {
-        type: String
-      },
+      title: String,
+      subTitle?: String,
       gradeStructure: [
         {
           title: String,
           grade: Number,
         },
+      ],
+      studentList: [
+        {
+          studentId: String,
+          studentName: String
+        }
       ]
       ```
 
 4.  Update one by id (teacher, owner only)
+
     - **Method**: PUT
     - **Route**: /classrooms/:id
     - **Header**:
@@ -84,6 +86,24 @@ This is a web application for my Web Development course on my university.
           _id?: String
         },
       ]
+      ```
+
+5.  Update student list (owner only)
+    - **Method**: PUT
+    - **Route**: /classrooms/student-list/csv/:classroomId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      FormData({
+        files: {
+          csv: //csv file here
+        }
+      })
       ```
 
 #### Grade Detail

@@ -1,15 +1,22 @@
 import express from 'express';
 import authMiddleware from '../../middlewares/auth';
 import classroomControllers from './controllers';
-const classroomRoutes = express.Router();
+import classroomMiddlewares from './middlewares';
+const classroomRouter = express.Router();
 
 // ======================== GET ========================
-classroomRoutes.get('/', authMiddleware, classroomControllers.getAllRelated);
-classroomRoutes.get('/:id', authMiddleware, classroomControllers.getOnePrivate);
+classroomRouter.get('/', authMiddleware, classroomControllers.getAllRelated);
+classroomRouter.get('/:id', authMiddleware, classroomControllers.getOnePrivate);
 // ======================== POST ========================
-classroomRoutes.post('/', authMiddleware, classroomControllers.postOne);
+classroomRouter.post('/', authMiddleware, classroomControllers.postOne);
 // ======================== PUT ========================
-classroomRoutes.put('/:id', authMiddleware, classroomControllers.putOnePrivate);
+classroomRouter.put('/:id', authMiddleware, classroomControllers.putOnePrivate);
+classroomRouter.put(
+  '/student-list/csv/:classroomId',
+  authMiddleware,
+  classroomMiddlewares.uploadCsvFile,
+  classroomControllers.putStudentListByCsv
+);
 // ======================== DELETE ========================
 
-export default classroomRoutes;
+export default classroomRouter;

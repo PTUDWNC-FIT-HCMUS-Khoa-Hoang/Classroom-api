@@ -26,6 +26,18 @@ const classroomSchema = new mongoose.Schema(
         },
       },
     ],
+    studentList: [
+      {
+        studentId: {
+          type: String,
+          required: true,
+        },
+        studentName: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     owner: {
       type: mongoose.Types.ObjectId,
       ref: 'User',
