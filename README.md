@@ -276,6 +276,19 @@ This is a web application for my Web Development course on my university.
      }
      ```
 
+4. Get One By Student Id
+
+   - **Method**: GET
+   - **Route**: /users/student/:studentId
+
+   - **Header**:
+
+   ```javascript
+   {
+     Authorization: `Bearer ${token}`;
+   }
+   ```
+
 #### User Classroom (Join classroom)
 
 1. Check participation
