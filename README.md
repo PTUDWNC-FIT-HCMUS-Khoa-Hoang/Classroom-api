@@ -105,6 +105,15 @@ This is a web application for my Web Development course on my university.
         }
       })
       ```
+6.  Get student list in csv format (owner only)
+    - **Method**: GET
+    - **Route**: /classrooms/student-list/csv/:classroomId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
 
 #### Grade Detail
 

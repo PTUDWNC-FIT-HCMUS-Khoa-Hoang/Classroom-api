@@ -7,6 +7,10 @@ const classroomRouter = express.Router();
 // ======================== GET ========================
 classroomRouter.get('/', authMiddleware, classroomControllers.getAllRelated);
 classroomRouter.get('/:id', authMiddleware, classroomControllers.getOnePrivate);
+classroomRouter.get(
+  '/student-list/csv/:classroomId',
+  classroomControllers.getStudentListCsvTemplate
+);
 // ======================== POST ========================
 classroomRouter.post('/', authMiddleware, classroomControllers.postOne);
 // ======================== PUT ========================

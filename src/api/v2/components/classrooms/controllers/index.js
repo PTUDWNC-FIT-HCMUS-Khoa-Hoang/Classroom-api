@@ -3,6 +3,7 @@ import getAllRelated from './getAllRelated';
 import getOnePrivate from './getOnePrivate';
 import putOnePrivate from './putOnePrivate';
 import putStudentListByCsv from './putStudentListByCsv';
+import getStudentListCsvTemplate from './getStudentListCsvTemplate';
 
 const classroomControllers = {
   postOne,
@@ -10,5 +11,6 @@ const classroomControllers = {
   getOnePrivate,
   putOnePrivate,
   putStudentListByCsv,
+  getStudentListCsvTemplate,
 };
 export default classroomControllers;
