@@ -28,8 +28,23 @@ const toCsvData = (gradeDetailsData, classroom) => {
   );
 
   // Create csv data
-  const fieldKeys = classroom.gradeStructure.map((detail) => detail.title);
-  const csvData = jsonToCsvData(gradeDetails, fieldKeys);
+  const gradeKeys = classroom.gradeStructure.map((detail) => detail.title);
+  const fieldKeys = ['studentId', 'studentName', ...gradeKeys];
+  // csv template data
+  let gradeStructureTemplate = {};
+  gradeKeys.forEach((gradeKey) => {
+    gradeStructureTemplate[gradeKey] = 100;
+  });
+
+  const gradeDetailTemplate = {
+    studentId: 'STU001',
+    studentName: 'Nguyen Van A',
+    ...gradeStructureTemplate,
+  };
+
+  const gradeDetailData =
+    gradeDetails.length > 0 ? gradeDetails : gradeDetailTemplate;
+  const csvData = jsonToCsvData(gradeDetailData, fieldKeys);
 
   return csvData;
 };

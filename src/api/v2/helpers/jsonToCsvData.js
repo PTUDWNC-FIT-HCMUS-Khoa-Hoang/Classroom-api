@@ -8,7 +8,7 @@ const jsonToCsvData = (data, fieldNames) => {
     };
   });
 
-  const parser = new json2csv.Parser(fields);
+  const parser = new json2csv.Parser({ fields });
 
   const csv = parser.parse(data);
 
