@@ -106,6 +106,35 @@ This is a web application for my Web Development course on my university.
       grade?: Number (0 - 100),
       ```
 
+2.  Post by csv file
+
+    - **Method**: POST
+    - **Route**: /grade-detail/csv/:classroomId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      FormData: {
+        files: {
+          csv: //csv file here
+        }
+      }
+      ```
+
+3.  Get data in csv format
+    - **Method**: GET
+    - **Route**: /grade-detail/csv/:classroomId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+
 #### Assignments
 
 1.  Create an assignment
