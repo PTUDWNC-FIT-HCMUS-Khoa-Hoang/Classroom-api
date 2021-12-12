@@ -3,6 +3,7 @@ import registerGoogle from './registerGoogle';
 import login from './login';
 import loginGoogle from './loginGoogle';
 import getOneById from './getOneById';
+import getOneByStudentId from './getOneByStudentId';
 import putOne from './putOne';
 
 export default {
@@ -11,5 +12,6 @@ export default {
   login,
   loginGoogle,
   getOneById,
+  getOneByStudentId,
   putOne,
 };

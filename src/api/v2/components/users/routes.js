@@ -6,6 +6,11 @@ const userRoutes = express.Router();
 
 //======================== GET ========================
 userRoutes.get('/other/:id', authMiddleware, userControllers.getOneById);
+userRoutes.get(
+  '/student/:studentId',
+  authMiddleware,
+  userControllers.getOneByStudentId
+);
 //======================== POST ========================
 userRoutes.post('/register', userControllers.register);
 userRoutes.post('/register/google', userControllers.registerGoogle);
