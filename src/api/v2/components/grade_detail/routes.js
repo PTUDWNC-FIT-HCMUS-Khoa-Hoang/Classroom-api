@@ -6,6 +6,11 @@ import gradeDetailControllers from './controllers';
 const gradeDetailRouter = express.Router();
 
 // ======================== GET ========================
+gradeDetailRouter.get(
+  '/csv/:classroomId',
+  authMiddleware,
+  gradeDetailControllers.getCsvDataByClassroomId
+);
 // ======================== POST ========================
 gradeDetailRouter.post('/', authMiddleware, gradeDetailControllers.postOne);
 gradeDetailRouter.post(
