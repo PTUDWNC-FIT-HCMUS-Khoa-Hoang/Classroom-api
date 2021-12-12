@@ -20,6 +20,8 @@ const getCsvDataByGradeId = async (req, res) => {
       gradeId
     );
 
+    res.header('Content-Type', 'text/csv');
+    res.attachment(`grade-detail-${gradeId}.csv`);
     res.status(200).send(csvData);
   } catch (error) {
     res.status(400).send(parseErrorIntoMessage(error));

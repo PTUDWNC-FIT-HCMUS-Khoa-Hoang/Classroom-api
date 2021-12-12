@@ -13,7 +13,7 @@ const gradeDetailRouter = express.Router();
 // );
 gradeDetailRouter.get(
   '/csv/:classroomId/:gradeId',
-  authMiddleware,
+  // authMiddleware,
   gradeDetailControllers.getCsvDataByGradeId
 );
 // ======================== POST ========================
