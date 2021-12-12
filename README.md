@@ -86,6 +86,26 @@ This is a web application for my Web Development course on my university.
       ]
       ```
 
+#### Grade Detail
+
+1.  Post one
+
+    - **Method**: POST
+    - **Route**: /grade-detail
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+    - **Body**:
+      ```javascript
+      classroomId: String,
+      studentId: String,
+      gradeId: String,
+      grade?: Number (0 - 100),
+      ```
+
 #### Assignments
 
 1.  Create an assignment
