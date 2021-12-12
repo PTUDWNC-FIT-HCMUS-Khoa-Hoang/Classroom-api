@@ -4,13 +4,13 @@ import mapObjectToArray from '../../../helpers/mapObjectToArray';
 const toCsvData = (gradeDetailsData, classroom, gradeId) => {
   // Create {
   //  [studentId]: {
-  //    grade: 0
+  //    grade: null
   //  }
   // }
   const gradeDetailObject = {};
   classroom.studentList.forEach((student) => {
     gradeDetailObject[student.studentId] = {
-      grade: 0,
+      grade: null,
     };
   });
 
@@ -22,14 +22,8 @@ const toCsvData = (gradeDetailsData, classroom, gradeId) => {
   // Create [{studentId: _ ,grade: _}]
   const gradeDetails = mapObjectToArray(gradeDetailObject, 'studentId');
 
-  // grade title
-  const { gradeStructure } = classroom;
-  const foundGrade = gradeStructure.find(
-    (detail) => detail._id.toString() === gradeId
-  );
-
   // Generate field keys
-  const fieldKeys = ['studentId', foundGrade.title];
+  const fieldKeys = ['studentId', 'grade'];
 
   // Create csv data
   const csvData = jsonToCsvData(gradeDetails, fieldKeys);
