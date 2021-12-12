@@ -21,6 +21,7 @@ const postOne = async (gradeDetailData) => {
       // If there is already a grade detail in Database
       gradeDetail = availableGradeDetail;
       gradeDetail.grade = gradeDetailData.grade;
+      gradeDetail.studentName = gradeDetailData.studentName;
     } else {
       // Create a new grade detail
       gradeDetail = new GradeDetail(gradeDetailData);

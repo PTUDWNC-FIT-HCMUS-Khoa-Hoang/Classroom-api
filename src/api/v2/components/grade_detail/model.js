@@ -11,6 +11,10 @@ const gradeDetailSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    studentName: {
+      type: String,
+      required: true,
+    },
     gradeId: {
       type: mongoose.Types.ObjectId,
       required: true,

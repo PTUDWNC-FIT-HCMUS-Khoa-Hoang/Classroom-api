@@ -2,6 +2,10 @@ import jsonToCsvData from '../../../helpers/jsonToCsvData';
 import mapObjectToArray from '../../../helpers/mapObjectToArray';
 
 const toCsvData = (gradeDetailsData, classroom) => {
+  console.log(
+    '🚀 ~ file: toCsvData.js ~ line 5 ~ toCsvData ~ gradeDetailsData',
+    gradeDetailsData
+  );
   // Map grade title -> grade id
   const mappedGradeId = {};
   classroom.gradeStructure.map((detail) => {
