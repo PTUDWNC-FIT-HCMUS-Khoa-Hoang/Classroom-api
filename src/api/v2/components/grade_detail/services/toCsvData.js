@@ -1,50 +1,38 @@
 import jsonToCsvData from '../../../helpers/jsonToCsvData';
 import mapObjectToArray from '../../../helpers/mapObjectToArray';
 
-const toCsvData = (gradeDetailsData, classroom) => {
-  // Map grade title -> grade id
-  const mappedGradeId = {};
-  classroom.gradeStructure.map((detail) => {
-    mappedGradeId[detail._id] = detail.title;
+const toCsvData = (gradeDetailsData, classroom, gradeId) => {
+  // Create {
+  //  [studentId]: {
+  //    grade: 0
+  //  }
+  // }
+  const gradeDetailObject = {};
+  classroom.studentList.forEach((student) => {
+    gradeDetailObject[student.studentId] = {
+      grade: 0,
+    };
   });
 
-  // Create {studentId: {studentName: _, grade1: _, grade2: _}}
-  const gradeDetailsGroupByStudentId = {};
-  gradeDetailsData.forEach((gradeDetail) => {
-    if (!gradeDetailsGroupByStudentId[gradeDetail.studentId]) {
-      gradeDetailsGroupByStudentId[gradeDetail.studentId] = {
-        studentName: gradeDetail.studentName,
-      };
-    }
-    gradeDetailsGroupByStudentId[gradeDetail.studentId][
-      mappedGradeId[gradeDetail.gradeId]
-    ] = gradeDetail.grade;
+  // Update grade by student id
+  gradeDetailsData.forEach((detail) => {
+    gradeDetailObject[detail.studentId].grade = detail.grade;
   });
 
-  // Transform object -> array
-  const gradeDetails = mapObjectToArray(
-    gradeDetailsGroupByStudentId,
-    'studentId'
+  // Create [{studentId: _ ,grade: _}]
+  const gradeDetails = mapObjectToArray(gradeDetailObject, 'studentId');
+
+  // grade title
+  const { gradeStructure } = classroom;
+  const foundGrade = gradeStructure.find(
+    (detail) => detail._id.toString() === gradeId
   );
 
+  // Generate field keys
+  const fieldKeys = ['studentId', foundGrade.title];
+
   // Create csv data
-  const gradeKeys = classroom.gradeStructure.map((detail) => detail.title);
-  const fieldKeys = ['studentId', 'studentName', ...gradeKeys];
-  // csv template data
-  let gradeStructureTemplate = {};
-  gradeKeys.forEach((gradeKey) => {
-    gradeStructureTemplate[gradeKey] = 100;
-  });
-
-  const gradeDetailTemplate = {
-    studentId: 'STU001',
-    studentName: 'Nguyen Van A',
-    ...gradeStructureTemplate,
-  };
-
-  const gradeDetailData =
-    gradeDetails.length > 0 ? gradeDetails : gradeDetailTemplate;
-  const csvData = jsonToCsvData(gradeDetailData, fieldKeys);
+  const csvData = jsonToCsvData(gradeDetails, fieldKeys);
 
   return csvData;
 };

@@ -11,6 +11,11 @@ gradeDetailRouter.get(
   authMiddleware,
   gradeDetailControllers.getCsvDataByClassroomId
 );
+gradeDetailRouter.get(
+  '/csv/:classroomId/:gradeId',
+  authMiddleware,
+  gradeDetailControllers.getCsvDataByGradeId
+);
 // ======================== POST ========================
 gradeDetailRouter.post('/', authMiddleware, gradeDetailControllers.postOne);
 gradeDetailRouter.post(
