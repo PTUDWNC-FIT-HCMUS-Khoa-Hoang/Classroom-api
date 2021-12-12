@@ -102,6 +102,7 @@ This is a web application for my Web Development course on my university.
       ```javascript
       classroomId: String,
       studentId: String,
+      studentName: String,
       gradeId: String,
       grade?: Number (0 - 100),
       ```
