@@ -2,21 +2,19 @@ import jsonToCsvData from '../../../helpers/jsonToCsvData';
 import mapObjectToArray from '../../../helpers/mapObjectToArray';
 
 const toCsvData = (gradeDetailsData, classroom) => {
-  console.log(
-    '🚀 ~ file: toCsvData.js ~ line 5 ~ toCsvData ~ gradeDetailsData',
-    gradeDetailsData
-  );
   // Map grade title -> grade id
   const mappedGradeId = {};
   classroom.gradeStructure.map((detail) => {
     mappedGradeId[detail._id] = detail.title;
   });
 
-  // Create {studentId: {grade1: _, grade2: _}}
+  // Create {studentId: {studentName: _, grade1: _, grade2: _}}
   const gradeDetailsGroupByStudentId = {};
   gradeDetailsData.forEach((gradeDetail) => {
     if (!gradeDetailsGroupByStudentId[gradeDetail.studentId]) {
-      gradeDetailsGroupByStudentId[gradeDetail.studentId] = {};
+      gradeDetailsGroupByStudentId[gradeDetail.studentId] = {
+        studentName: gradeDetail.studentName,
+      };
     }
     gradeDetailsGroupByStudentId[gradeDetail.studentId][
       mappedGradeId[gradeDetail.gradeId]
