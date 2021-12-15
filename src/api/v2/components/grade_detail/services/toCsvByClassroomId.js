@@ -11,12 +11,15 @@ const toCsvDataByClassroomId = (gradeDetailsData, classroom) => {
     mappedGradeId[detail._id] = detail.title;
   });
 
-  // Create {studentId: {grade1: _, grade2: _}}
+  // Create [{[studentId]: {}}]
   const gradeDetailsGroupByStudentId = {};
-  gradeDetailsData.forEach((gradeDetail) => {
-    if (!gradeDetailsGroupByStudentId[gradeDetail.studentId]) {
-      gradeDetailsGroupByStudentId[gradeDetail.studentId] = {};
+  classroom.studentList.forEach((student) => {
+    if (!gradeDetailsGroupByStudentId[student.studentId]) {
+      gradeDetailsGroupByStudentId[student.studentId] = {};
     }
+  });
+  // Create {[studentId]: {grade1: _, grade2: _}}
+  gradeDetailsData.forEach((gradeDetail) => {
     gradeDetailsGroupByStudentId[gradeDetail.studentId][
       mappedGradeId[gradeDetail.gradeId]
     ] = gradeDetail.grade;
