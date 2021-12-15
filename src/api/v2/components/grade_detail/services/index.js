@@ -1,11 +1,11 @@
 import postOne from './postOne';
-import parseCsvToGradeDetails from './parseCsvToGradeDetails';
+import parseCsvByGradeId from './parseCsvByGradeId';
 import getByClassroomId from './getByClassroomId';
 import toCsvData from './toCsvData';
 
 const gradeDetailServices = {
   postOne,
-  parseCsvToGradeDetails,
+  parseCsvByGradeId,
   getByClassroomId,
   toCsvData,
 };

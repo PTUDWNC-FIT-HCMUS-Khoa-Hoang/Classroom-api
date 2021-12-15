@@ -136,10 +136,10 @@ This is a web application for my Web Development course on my university.
       grade?: Number (0 - 100),
       ```
 
-2.  Post by csv file
+2.  Post csv for 1 type of grade
 
     - **Method**: POST
-    - **Route**: /grade-detail/csv/:classroomId
+    - **Route**: /grade-detail/csv/:classroomId/:gradeId
     - **Header**:
       ```javascript
       {

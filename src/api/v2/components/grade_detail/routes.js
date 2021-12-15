@@ -19,10 +19,10 @@ gradeDetailRouter.get(
 // ======================== POST ========================
 gradeDetailRouter.post('/', authMiddleware, gradeDetailControllers.postOne);
 gradeDetailRouter.post(
-  '/csv/:classroomId',
+  '/csv/:classroomId/:gradeId',
   authMiddleware,
   gradeDetailMiddlewares.uploadCsvFile,
-  gradeDetailControllers.postByCsv
+  gradeDetailControllers.postCsvDataByGradeId
 );
 // ======================== PUT ========================
 // ======================== DELETE ========================

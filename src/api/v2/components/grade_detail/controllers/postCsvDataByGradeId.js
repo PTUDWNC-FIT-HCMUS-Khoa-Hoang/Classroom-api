@@ -1,16 +1,18 @@
 import gradeDetailServices from '../services';
 import Classroom from '../../classrooms/model';
 
-const postByCsv = async (req, res) => {
+const postCsvDataByGradeId = async (req, res) => {
   const csvFile = req.files.csv;
   const classroomId = req.params.classroomId;
+  const gradeId = req.params.gradeId;
 
   try {
     const classroom = await Classroom.findById(classroomId);
 
-    const gradeDetailsData = await gradeDetailServices.parseCsvToGradeDetails(
+    const gradeDetailsData = await gradeDetailServices.parseCsvByGradeId(
       csvFile.tempFilePath,
-      classroom
+      classroom,
+      gradeId
     );
 
     const gradeDetails = await Promise.all(
@@ -28,4 +30,4 @@ const postByCsv = async (req, res) => {
   }
 };
 
-export default postByCsv;
+export default postCsvDataByGradeId;

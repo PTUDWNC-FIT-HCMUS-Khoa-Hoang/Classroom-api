@@ -1,11 +1,11 @@
 import postOne from './postOne';
-import postByCsv from './postByCsv';
+import postCsvDataByGradeId from './postCsvDataByGradeId';
 import getCsvDataByClassroomId from './getCsvDataByClassroomId';
 import getCsvDataByGradeId from './getCsvDataByGradeId';
 
 const gradeDetailControllers = {
   postOne,
-  postByCsv,
+  postCsvDataByGradeId,
   getCsvDataByClassroomId,
   getCsvDataByGradeId,
 };
