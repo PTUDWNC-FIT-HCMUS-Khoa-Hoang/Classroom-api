@@ -1,7 +1,7 @@
 import jsonToCsvData from '../../../helpers/jsonToCsvData';
 import mapObjectToArray from '../../../helpers/mapObjectToArray';
 
-const toCsvData = (gradeDetailsData, classroom, gradeId) => {
+const toCsvByGradeId = (gradeDetailsData, classroom, gradeId) => {
   // Create {
   //  [studentId]: {
   //    grade: null
@@ -31,4 +31,4 @@ const toCsvData = (gradeDetailsData, classroom, gradeId) => {
   return csvData;
 };
 
-export default toCsvData;
+export default toCsvByGradeId;

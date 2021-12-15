@@ -14,7 +14,7 @@ const getCsvDataByGradeId = async (req, res) => {
       gradeId,
     });
 
-    const csvData = gradeDetailServices.toCsvData(
+    const csvData = gradeDetailServices.toCsvByGradeId(
       gradeDetails,
       classroom,
       gradeId
