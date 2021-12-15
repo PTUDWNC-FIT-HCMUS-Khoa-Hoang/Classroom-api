@@ -2,11 +2,19 @@ import GradeDetail from '../model';
 import Classroom from '../../classrooms/model';
 import parseErrorIntoMessage from '../../../helpers/parseErrorIntoMessage';
 import gradeDetailServices from '../services';
+import checkRole from '../../classrooms/helpers/checkRole';
+import ROLES from '../../../constants/role';
 
 const getCsvDataByGradeId = async (req, res) => {
   const { classroomId, gradeId } = req.params;
 
   try {
+    await checkRole({
+      userId: req.user.id,
+      classroomId: gradeDetailData.classroomId,
+      roles: [ROLES.OWNER],
+    });
+
     const classroom = await Classroom.findById(classroomId);
 
     const gradeDetails = await GradeDetail.find({

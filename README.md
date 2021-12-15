@@ -175,6 +175,15 @@ This is a web application for my Web Development course on my university.
         Authorization: `Bearer ${token}`;
       }
       ```
+5.  Get grade board by classroomId
+    - **Method**: GET
+    - **Route**: /grade-detail/:classroomId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
 
 #### Assignments
 
