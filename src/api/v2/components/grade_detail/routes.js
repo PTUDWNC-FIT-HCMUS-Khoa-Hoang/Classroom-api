@@ -7,6 +7,11 @@ const gradeDetailRouter = express.Router();
 
 // ======================== GET ========================
 gradeDetailRouter.get(
+  '/:classroomId',
+  authMiddleware,
+  gradeDetailControllers.getByClassroomId
+);
+gradeDetailRouter.get(
   '/csv/:classroomId',
   authMiddleware,
   gradeDetailControllers.getCsvDataByClassroomId
