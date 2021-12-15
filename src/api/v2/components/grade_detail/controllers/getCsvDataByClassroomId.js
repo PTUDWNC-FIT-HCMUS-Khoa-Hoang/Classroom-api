@@ -11,7 +11,10 @@ const getCsvDataByClassroomId = async (req, res) => {
       classroomId
     );
 
-    const csvData = gradeDetailServices.toCsvData(rawGradeDetails, classroom);
+    const csvData = gradeDetailServices.toCsvDataByClassroomId(
+      rawGradeDetails,
+      classroom
+    );
 
     res.header('Content-Type', 'text/csv');
     res.attachment(`grade-template-${classroomId}.csv`);

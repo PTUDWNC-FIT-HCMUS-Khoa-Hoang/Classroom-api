@@ -142,7 +142,8 @@ This is a web application for my Web Development course on my university.
     - **Header**:
       ```javascript
       {
-        Authorization: `Bearer ${token}`;
+        Authorization: `Bearer ${token}`,
+        'Content-type': 'multipart/form-data'
       }
       ```
     - **Body**:
@@ -155,8 +156,19 @@ This is a web application for my Web Development course on my university.
       ```
 
 3.  Get data in csv format by grade
+
     - **Method**: GET
     - **Route**: /grade-detail/csv/:classroomId/:gradeId
+    - **Header**:
+      ```javascript
+      {
+        Authorization: `Bearer ${token}`;
+      }
+      ```
+
+4.  Get data in csv format by classroom
+    - **Method**: GET
+    - **Route**: /grade-detail/csv/:classroomId
     - **Header**:
       ```javascript
       {
