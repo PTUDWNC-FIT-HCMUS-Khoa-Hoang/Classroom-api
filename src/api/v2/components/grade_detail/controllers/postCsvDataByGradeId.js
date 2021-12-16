@@ -4,14 +4,14 @@ import checkRole from '../../classrooms/helpers/checkRole';
 import ROLES from '../../../constants/role';
 
 const postCsvDataByGradeId = async (req, res) => {
-  const csvFile = req.files.csv;
-  const classroomId = req.params.classroomId;
-  const gradeId = req.params.gradeId;
-
   try {
+    const csvFile = req.files.csv;
+    const classroomId = req.params.classroomId;
+    const gradeId = req.params.gradeId;
+
     await checkRole({
       userId: req.user.id,
-      classroomId: gradeDetailData.classroomId,
+      classroomId,
       roles: [ROLES.OWNER],
     });
 
