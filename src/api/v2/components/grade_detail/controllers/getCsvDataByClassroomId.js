@@ -9,7 +9,7 @@ const getCsvDataByClassroomId = async (req, res) => {
   try {
     await checkRole({
       userId: req.user.id,
-      classroomId: gradeDetailData.classroomId,
+      classroomId,
       roles: [ROLES.OWNER],
     });
 
