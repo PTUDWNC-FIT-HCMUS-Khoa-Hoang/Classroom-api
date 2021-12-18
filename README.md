@@ -54,6 +54,7 @@ This is a web application for my Web Development course on my university.
         {
           title: String,
           grade: Number,
+          isFinalized: Boolean
         },
       ],
       studentList: [
@@ -83,6 +84,7 @@ This is a web application for my Web Development course on my university.
         {
           title: String,
           grade: Number,
+          isFinalized?: Boolean,
           _id?: String
         },
       ]

@@ -24,6 +24,10 @@ const classroomSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
+        isFinalized: {
+          type: Boolean,
+          default: false,
+        },
       },
     ],
     studentList: [
