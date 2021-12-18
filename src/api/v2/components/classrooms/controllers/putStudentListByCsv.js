@@ -18,8 +18,13 @@ const putStudentListByCsv = async (req, res) => {
       csvFile.tempFilePath
     );
 
+    const mergedStudentList = await classroomServices.mergeStudentList(
+      classroomId,
+      studentList
+    );
+
     const updatedClassroom = await classroomServices.putOneById(classroomId, {
-      studentList,
+      studentList: mergedStudentList,
     });
 
     res.status(200).send(updatedClassroom);
