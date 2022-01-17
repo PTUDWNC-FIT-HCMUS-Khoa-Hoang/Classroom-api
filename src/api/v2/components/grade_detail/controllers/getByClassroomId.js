@@ -10,7 +10,7 @@ const getByClassroomId = async (req, res) => {
     await checkRole({
       userId: req.user.id,
       classroomId: classroomId,
-      roles: [ROLES.OWNER],
+      roles: [ROLES.OWNER, ROLES.TEACHER, ROLES.STUDENT],
     });
 
     const classroom = await Classroom.findById(classroomId);
