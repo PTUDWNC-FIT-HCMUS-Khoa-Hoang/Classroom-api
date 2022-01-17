@@ -1,6 +1,6 @@
-import Classroom from '../model';
-import checkRole from '../helpers/checkRole';
 import ROLES from '../../../constants/role';
+import checkRole from '../helpers/checkRole';
+import classroomServices from '../services';
 
 const putOnePrivate = async (req, res) => {
   const classroomId = req.params.id;
@@ -11,10 +11,10 @@ const putOnePrivate = async (req, res) => {
       classroomId,
       roles: [ROLES.TEACHER],
     });
-    const updatedClassroom = await Classroom.findByIdAndUpdate(
+    const updatedClassroom = await classroomServices.putOneById(
+      req.user,
       classroomId,
-      req.body,
-      { new: true }
+      req.body
     );
     res.status(200).send(updatedClassroom);
   } catch (error) {
