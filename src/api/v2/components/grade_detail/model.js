@@ -22,6 +22,10 @@ const gradeDetailSchema = new mongoose.Schema(
       max: [100, 'Điểm không được vượt quá 100'],
       default: 0,
     },
+    hasReviewed: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
