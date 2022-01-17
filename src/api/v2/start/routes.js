@@ -4,6 +4,7 @@ import invitationRoutes from '../components/invitation/routes';
 import userRoutes from '../components/users/routes';
 import joinClassroomRoutes from '../components/user_classroom/routes';
 import gradeDetailRouter from '../components/grade_detail/routes';
+import notificationRoutes from '../components/notifications/routes';
 
 const startRoutes = (app) => {
   app.use('/users', userRoutes);
@@ -12,6 +13,7 @@ const startRoutes = (app) => {
   app.use('/invitation', invitationRoutes);
   app.use('/assignments', assignmentRoutes);
   app.use('/grade-detail', gradeDetailRouter);
+  app.use('/notifications', notificationRoutes);
 
   //404
   app.use((req, res, next) => {
