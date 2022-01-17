@@ -13,6 +13,7 @@ const fulfillGradeBoard = (classroom, gradeDetails) => {
         );
       });
       fulfilledGradeBoard.push({
+        _id: detail?._id || '',
         classroomId: classroom._id,
         studentId,
         gradeId,
