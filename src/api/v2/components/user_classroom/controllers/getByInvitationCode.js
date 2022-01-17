@@ -31,7 +31,7 @@ const getByInvitationCode = async (req, res) => {
       const userClassroom = new UserClassroom({
         userId,
         classroomId: classroom._id,
-        role: ROLES.student,
+        role: ROLES.STUDENT,
       });
       await userClassroom.save();
       responseObject.message = 'Successfully joined classroom';
