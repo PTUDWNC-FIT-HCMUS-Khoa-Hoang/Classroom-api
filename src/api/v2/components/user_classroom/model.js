@@ -14,8 +14,8 @@ const userClassroomSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: Object.keys(ROLES),
-    default: ROLES.student,
+    enum: Object.keys(ROLES).map((role) => role.toLowerCase()),
+    default: ROLES.STUDENT,
   },
 });
 
