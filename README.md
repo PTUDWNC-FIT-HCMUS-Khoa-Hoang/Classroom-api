@@ -395,3 +395,15 @@ This is a web application for my Web Development course on my university.
          role: 'teacher' | 'student'
      }
      ```
+
+#### Notifications
+
+1. Get mine
+   - **Method**: GET
+   - **Route**: /notifications/mine
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
