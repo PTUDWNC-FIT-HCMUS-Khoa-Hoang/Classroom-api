@@ -1,6 +1,7 @@
 import ROLES from '../../../constants/role';
 import parseErrorIntoMessage from '../../../helpers/parseErrorIntoMessage';
 import checkRole from '../helpers/checkRole';
+import Classroom from '../model';
 import classroomServices from '../services';
 
 const putStudentListByCsv = async (req, res) => {
@@ -23,9 +24,13 @@ const putStudentListByCsv = async (req, res) => {
       studentList
     );
 
-    const updatedClassroom = await classroomServices.putOneById(classroomId, {
-      studentList: mergedStudentList,
-    });
+    const updatedClassroom = await Classroom.findByIdAndUpdate(
+      classroomId,
+      {
+        studentList: mergedStudentList,
+      },
+      { new: true }
+    );
 
     res.status(200).send(updatedClassroom);
   } catch (error) {
