@@ -11,8 +11,12 @@ notificationRoutes.get(
   notificationControllers.getMine
 );
 //======================== POST ========================
-
 //======================== PUT ========================
+notificationRoutes.put(
+  '/:id',
+  authMiddleware,
+  notificationControllers.putOneById
+);
 //======================== DELETE ========================
 
 export default notificationRoutes;
