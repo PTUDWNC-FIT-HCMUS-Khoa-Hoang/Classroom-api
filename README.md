@@ -407,3 +407,18 @@ This is a web application for my Web Development course on my university.
        Authorization: `Bearer ${token}`;
      }
      ```
+2. Put one
+   - **Method**: PUT
+   - **Route**: /notifications/:id
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
+   - **Body**:
+     ```javascript
+     {
+       isRead: Boolean;
+     }
+     ```
