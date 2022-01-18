@@ -25,8 +25,18 @@ const userSchema = new mongoose.Schema(
     studentId: {
       type: String,
       index: true,
+      unique: true,
+      sparse: true,
     },
     isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    isDeleted: {
       type: Boolean,
       default: false,
     },
