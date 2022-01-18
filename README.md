@@ -451,3 +451,20 @@ This is a web application for my Web Development course on my university.
        Authorization: `Bearer ${token}`;
      }
      ```
+3. Put One By Id (teacher & owner)
+   - **Method**: PUT
+   - **Route**: /grade-reviews/:id
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
+   - **Body**:
+     ```javascript
+      {
+        teacherComment?: String,
+        isFinalDecision?: Boolean,
+        upgradedGrade?: Number,
+      }
+     ```
