@@ -422,3 +422,23 @@ This is a web application for my Web Development course on my university.
        isRead: Boolean;
      }
      ```
+
+#### Grade Review
+
+1. Post One (by student)
+   - **Method**: POST
+   - **Route**: /grade-reviews
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
+   - **Body**:
+     ```javascript
+      {
+        gradeDetail: ObjectId,
+        studentExpectation: Number,
+        studentExplanation: String
+      }
+     ```
