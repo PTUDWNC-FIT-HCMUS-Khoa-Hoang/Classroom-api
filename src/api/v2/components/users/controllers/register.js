@@ -4,7 +4,7 @@ import parseErrorIntoMessage from '../../../helpers/parseErrorIntoMessage';
 const register = async (req, res) => {
   const { email, password, fullname } = req.body;
   try {
-    const userFoundByEmail = await User.findOne({ email });
+    const userFoundByEmail = await User.findOne({ email, isDeleted: false });
     if (userFoundByEmail) {
       throw new Error('Existed email');
     }
