@@ -3,6 +3,8 @@ import notificationServices from '../../notifications/services';
 import userServices from '../../users/services';
 import classroomServices from '../../classrooms/services';
 import gradeReviewServices from '../services';
+import userClassroomServices from '../../user_classroom/services';
+import ROLES from '../../../constants/role';
 
 const postOne = async (req, res) => {
   // const requestUser = req.user;
@@ -24,18 +26,30 @@ const postOne = async (req, res) => {
     const reviewingGrade = classroom.gradeStructure?.find(
       (grade) => grade._id.toString() === gradeDetail.gradeId.toString()
     );
+    const message = `Sinh viên ${requestUser.studentId} đã tạo một yêu cầu phúc khảo ở lớp học ${classroom.title} tại cột điểm ${reviewingGrade.title}.`;
     // notify to owner
     const { owner } = classroom;
-
     notificationServices.notify({
       subjectId: requestUser._id,
       observerId: owner,
       objectId: gradeReview._id,
       objectName: 'grade-review',
-      message: `Sinh viên ${requestUser.studentId} vừa tạo một yêu cầu phúc khảo ở lớp học ${classroom.title} tại cột điểm ${reviewingGrade.title}.`,
+      message,
     });
     // notify to teachers
-
+    const teachers = await userClassroomServices.getAll({
+      classroomId,
+      role: ROLES.TEACHER,
+    });
+    teachers.forEach((teacher) => {
+      notificationServices.notify({
+        subjectId: requestUser._id,
+        observerId: teacher.userId,
+        objectId: gradeReview._id,
+        objectName: 'grade-review',
+        message,
+      });
+    });
     // hasReviewed: true
 
     res.status(201).send(gradeReview);
