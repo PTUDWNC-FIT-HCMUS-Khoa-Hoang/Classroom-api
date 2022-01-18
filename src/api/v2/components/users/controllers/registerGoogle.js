@@ -12,7 +12,7 @@ const registerGoogle = async (req, res) => {
     const googleAccountInformation = await googleAccountVerification(tokenId);
     const { email, sub: googleId, name: fullname } = googleAccountInformation;
     const password = generateUUID(32);
-    const userFoundByEmail = await User.findOne({ email });
+    const userFoundByEmail = await User.findOne({ email, isDeleted: false });
     if (userFoundByEmail) {
       throw new Error('Existed email');
     }
