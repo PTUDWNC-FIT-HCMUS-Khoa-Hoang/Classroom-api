@@ -27,7 +27,9 @@ const getAllByClassroomId = async (req, res) => {
       })
     );
 
-    res.status(200).send(gradeReviewsByClassroom);
+    const nullFiltered = gradeReviewsByClassroom.filter((notNull) => notNull);
+
+    res.status(200).send(nullFiltered);
   } catch (error) {
     res.status(400).send({
       message: error.message,
