@@ -17,6 +17,10 @@ const postOne = async (req, res) => {
     if (requestUser.studentId !== gradeDetail.studentId) {
       throw new Error('Bạn không có quyền yêu cầu phúc khảo');
     }
+    // check has reviewed once or not
+    if (gradeDetail.hasReviewed) {
+      throw new Error('Bạn đã phúc khảo một lần cột điểm này.');
+    }
 
     const gradeReview = await gradeReviewServices.postOne(req.body);
 
@@ -50,7 +54,9 @@ const postOne = async (req, res) => {
         message,
       });
     });
-    // hasReviewed: true
+    // gradeDetail.hasReviewed: true
+    gradeDetail.hasReviewed = true;
+    gradeDetail.save();
 
     res.status(201).send(gradeReview);
   } catch (error) {
