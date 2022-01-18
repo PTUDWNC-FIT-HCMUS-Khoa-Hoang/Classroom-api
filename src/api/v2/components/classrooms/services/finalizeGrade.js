@@ -37,7 +37,7 @@ const finalizeGrade = async (classroomId, newGradeStructure, user) => {
                 observerId: studentUser._id,
                 objectId: classroomId,
                 objectName: 'classrooms',
-                message: `The '${grade.title}' grade column has just been finalized in class '${oldClassroom.title}'.`,
+                message: `Cột điểm '${grade.title}' trong lớp '${oldClassroom.title}' đã được giáo viên tổng kết.`,
               });
             } catch (error) {
               console.log('Error in finalize grade service: ', error.message);
