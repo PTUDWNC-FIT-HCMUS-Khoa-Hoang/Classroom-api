@@ -17,6 +17,13 @@ const gradeReviewSchema = new mongoose.Schema(
     teacherComment: {
       type: String,
     },
+    isFinalDecision: {
+      type: Boolean,
+      default: false,
+    },
+    oldGrade: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

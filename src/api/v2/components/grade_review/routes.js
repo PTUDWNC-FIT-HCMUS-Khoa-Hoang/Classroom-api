@@ -18,6 +18,11 @@ gradeReviewRoutes.get(
 // ======================== POST ========================
 gradeReviewRoutes.post('/', authMiddleware, gradeReviewControllers.postOne);
 // ======================== PUT ========================
+gradeReviewRoutes.put(
+  '/:id',
+  authMiddleware,
+  gradeReviewControllers.putOneById
+);
 // ======================== DELETE ========================
 
 export default gradeReviewRoutes;
