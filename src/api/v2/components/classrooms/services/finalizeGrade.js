@@ -14,7 +14,7 @@ const finalizeGrade = async (classroomId, newGradeStructure, user) => {
       const oldGrade = oldGradeStructure.find(
         (grade) => grade._id.toString() === newGrade._id
       );
-      if (!oldGrade.isFinalized && newGrade.isFinalized) {
+      if (!oldGrade?.isFinalized && newGrade?.isFinalized) {
         return newGrade;
       }
     });
