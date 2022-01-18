@@ -442,3 +442,12 @@ This is a web application for my Web Development course on my university.
         studentExplanation: String
       }
      ```
+2. Get One By ClassroomId (teacher & owner)
+   - **Method**: GET
+   - **Route**: /grade-reviews/by-classroom-id/:classroomId
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
+     ```
