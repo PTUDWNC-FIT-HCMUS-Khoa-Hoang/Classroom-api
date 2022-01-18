@@ -442,7 +442,7 @@ This is a web application for my Web Development course on my university.
         studentExplanation: String
       }
      ```
-2. Get One By ClassroomId (teacher & owner)
+2. Get All By ClassroomId (teacher & owner)
    - **Method**: GET
    - **Route**: /grade-reviews/by-classroom-id/:classroomId
    - **Header**:
@@ -467,4 +467,13 @@ This is a web application for my Web Development course on my university.
         isFinalDecision?: Boolean,
         upgradedGrade?: Number,
       }
+     ```
+4. Get One By Id
+   - **Method**: GET
+   - **Route**: /grade-reviews/:id
+   - **Header**:
+     ```javascript
+     {
+       Authorization: `Bearer ${token}`;
+     }
      ```
