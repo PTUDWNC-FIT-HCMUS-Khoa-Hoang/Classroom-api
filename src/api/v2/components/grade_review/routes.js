@@ -10,6 +10,11 @@ gradeReviewRoutes.get(
   authMiddleware,
   gradeReviewControllers.getAllByClassroomId
 );
+gradeReviewRoutes.get(
+  '/:id',
+  authMiddleware,
+  gradeReviewControllers.getOneById
+);
 // ======================== POST ========================
 gradeReviewRoutes.post('/', authMiddleware, gradeReviewControllers.postOne);
 // ======================== PUT ========================
