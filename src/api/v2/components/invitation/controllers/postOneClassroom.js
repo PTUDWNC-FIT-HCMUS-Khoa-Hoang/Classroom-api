@@ -26,7 +26,7 @@ const postOneClassroom = async (req, res) => {
       }
     }
 
-    if (role === ROLES.teacher) {
+    if (role === ROLES.TEACHER) {
       // Check if this one is the owner
       const ownedClassroom = await Classroom.findOne({
         owner: userId,
@@ -35,7 +35,7 @@ const postOneClassroom = async (req, res) => {
       const teachingClassroom = await UserClassroom.findOne({
         userId,
         classroomId,
-        role: ROLES.teacher,
+        role: ROLES.TEACHER,
       });
       const classroom = ownedClassroom || teachingClassroom;
       if (!classroom) {
